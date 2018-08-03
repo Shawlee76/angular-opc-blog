@@ -1,0 +1,22 @@
+<li [ngClass]="{'list-group-item':true,
+                'list-group-item-success': getHits() > 0,
+                'list-group-item-danger' : getHits() < 0,
+                'list-group-item-default': getHits() == 0
+    }">
+<!-- Beaucoup plus simple <li class="list-group-item list-group-item-{{getColor()}}"> -->
+  <div class="row">
+    <div class="col-sm-9">
+      <h3 class="alert-{{ getColor() }}">{{getTitle()}}</h3>
+      <p>{{ getContent() }}</p>
+    </div>
+     <div class="col-sm-3">
+       {{ getCreated() | date: short }}
+     </div>
+  </div>
+  <div class="row">
+    <button class="btn btn-success"
+            (click)="onHits(true)">Super !!</button>&nbsp;
+    <button class="btn btn-danger"
+            (click)="onHits(false)">Bof !!</button>
+  </div>
+</li>
